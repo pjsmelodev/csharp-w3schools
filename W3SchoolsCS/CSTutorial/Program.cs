@@ -12,7 +12,9 @@ namespace CSTutorial
         {
             //GetStarted();
             //Output();
-            Variables();
+            //Variables();
+            //Constants();
+            DisplayVariables();
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
@@ -50,8 +52,40 @@ namespace CSTutorial
             string name = "John";
             Console.WriteLine(name);
 
-            int myNym = 15;
-            Console.WriteLine(myNym);
+            /*
+            //int myNum = 15;
+            int myNum;
+            myNum = 15;
+            Console.WriteLine(myNum);
+            */
+
+            int myNum = 15;
+            myNum = 20;
+            Console.WriteLine(myNum);
+
+            // Outros tipos de variáveis
+            double myDoubleNum = 5.99D;
+            char myLetter = 'D';
+            bool myBool = true;
+            string myText = "Hello";
+        }
+
+        static void Constants() 
+        {
+            const int myNum = 15;
+            //myNum = 20; // error
+            Console.WriteLine(myNum);
+        }
+
+        static void DisplayVariables()
+        { 
+            string name = "John";
+            Console.WriteLine("Hello " + name + '!');
+
+            string firstName = "John ";
+            string lastName = "Doe";
+            string fullName = firstName + lastName;
+            Console.WriteLine(fullName);
         }
     }
 }
