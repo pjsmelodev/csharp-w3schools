@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 
-
 namespace CSClasses
 {
     /*
@@ -429,7 +428,7 @@ namespace CSClasses
                 Console.WriteLine("The 'try catch' is finished.");
             }
 
-            checkAge(15);
+            //checkAge(15);
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
