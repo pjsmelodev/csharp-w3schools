@@ -20,7 +20,10 @@ namespace CSTutorial
             //Strings();
             //Booleans();
             //Conditionals();
-            Switch();
+            //Switch();
+            //WhileLoop();
+            //BreakContinue();
+            Arrays();
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
@@ -340,7 +343,212 @@ namespace CSTutorial
 
         static void Switch()
         {
+            /*
+                Sintaxe:
+                switch(expression) 
+                {
+                    case x:
+                        // code block
+                        break;
+                    case y:
+                        // code block
+                        break;
+                    default:
+                        // code block
+                    break;
+                }
+            */
 
+            int day = 4;
+            switch (day)
+            {
+                case 1:
+                    Console.WriteLine("Monday");
+                    break;
+                case 2:
+                    Console.WriteLine("Tuesday");
+                    break;
+                case 3:
+                    Console.WriteLine("Wednesday");
+                    break;
+                case 4:
+                    Console.WriteLine("Thursday");
+                    break;
+                case 5:
+                    Console.WriteLine("Friday");
+                    break;
+                case 6:
+                    Console.WriteLine("Saturday");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        static void WhileLoop()
+        {
+            /*
+             *  While Loop
+                Sintaxe:
+                while (condition) 
+                {
+                    // code block to be executed
+                }
+            */
+
+            int i = 0;
+            while ( i < 5)
+            {
+                Console.WriteLine(i);
+                i++;
+            }
+
+            /*
+                Do While Loop -> Assegura que executa o bloco pelo menos uma vez (mesmo com avaliação negativa)
+                Sintaxe:
+                do 
+                {
+                    // code block to be executed
+                }
+                while (condition);
+            */
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            int y = 0;
+            do
+            {
+                Console.WriteLine(y);
+                y++;
+            }
+            while (i < 5);
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            /*
+             * For Loop
+             * Sintaxe:
+             *  for (statement 1; statement 2; statement 3) 
+                {
+                    // code block to be executed
+                }
+            */
+
+            for (int x = 0; x < 5; x++)
+            {
+                Console.WriteLine(x);
+            }
+
+            for (int z = 0; z <= 10; z = z + 2)
+            {
+                Console.WriteLine(z);
+            }
+
+            /*
+             * Nested Loop
+             * Sintaxe:
+             *  // Outer loop
+                for (int i = 1; i <= 2; ++i) 
+                {
+                    Console.WriteLine("Outer: " + i);  // Executes 2 times
+
+                    // Inner loop
+                    for (int j = 1; j <= 3; j++) 
+                    {
+                        Console.WriteLine(" Inner: " + j); // Executes 6 times (2 * 3)
+                    }
+                }
+            */
+
+            /*
+             * Foreach Loop
+             * Sintaxe:
+             *  foreach (type variableName in arrayName) 
+                {
+                    // code block to be executed
+                }
+            */
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            string[] cars = { "Volvo", "BMW", "Ford", "Mazda" };
+            foreach (string z in cars)
+            {
+                Console.WriteLine(z);
+            }
+        }
+
+        static void BreakContinue()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 4)
+                {
+                    break;
+                }
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 4)
+                {
+                    continue;
+                }
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            int i2 = 0;
+            while (i2 < 10)
+            {
+                Console.WriteLine(i2);
+                i2++;
+                if (i2 == 4)
+                {
+                    break;
+                }
+            }
+
+            int i3 = 0;
+            while (i3 < 10)
+            {
+                if (i3 == 4)
+                {
+                    i3++;
+                    continue;
+                }
+                Console.WriteLine(i3);
+                i3++;
+            }
+        }
+
+        static void Arrays()
+        {
+            string[] cars = { "Volvo", "BMW", "Ford", "Mazda" };
+            int[] myNums = { 10, 20, 30, 40 };
+
+            Console.WriteLine(cars[0]);
+
+            cars[0] = "Opel";
+            Console.WriteLine(cars[0]);
+
+            Console.WriteLine(cars.Length);     // Outputs 4
+
+            // Create an array of four elements, and add values later
+            string[] cars2 = new string[4];
+
+            // Create an array of four elements and add values right away 
+            string[] cars3 = new string[4] { "Volvo", "BMW", "Ford", "Mazda" };
+
+            // Create an array of four elements without specifying the size 
+            string[] cars4 = new string[] { "Volvo", "BMW", "Ford", "Mazda" };
+
+            // Create an array of four elements, omitting the new keyword, and without specifying the size
+            string[] cars5 = { "Volvo", "BMW", "Ford", "Mazda" };
         }
     }
 }
