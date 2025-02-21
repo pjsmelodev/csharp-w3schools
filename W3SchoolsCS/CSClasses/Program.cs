@@ -1,5 +1,6 @@
-﻿using CSClasses;
-using System;
+﻿using System;
+using System.IO;
+
 
 namespace CSClasses
 {
@@ -177,6 +178,7 @@ namespace CSClasses
      *  Abstract Class -> Não pode ser instanciada -> tem de ser herdada por outra class
      *  Abstract Method -> Só pode ser usado numa classe abstrata e não tem corpo
     */
+    /*
     abstract class Animal
     {
         public abstract void animalSound();     // Não tem corpo
@@ -193,6 +195,82 @@ namespace CSClasses
             Console.WriteLine("The pig says: wee wee");
         }
     }
+    */
+
+    /*
+     * Interfaces: classes completamente abstratas que são usadas para agrupar métodos relacionados com corpos vazios
+     * Útil quando se quer criar métodos que devem ser implementados em várias classes
+    */
+    interface IAnimal
+    {
+        void animalSound();     // interface method (does not have a body)
+    }
+
+    class Pig : IAnimal
+    {
+        public void animalSound()
+        {
+            Console.WriteLine("The pig says: wee wee");
+        }
+    }
+
+    // Multiple Interfaces
+    interface IFirstInterface
+    {
+        void myMethod();
+    }
+
+    interface ISecondInterface
+    {
+        void myOtherMethod();
+    }
+
+    class DemoClass : IFirstInterface, ISecondInterface
+    {
+        public void myMethod()
+        {
+            Console.WriteLine("Some text..");
+        }
+
+        public void myOtherMethod()
+        {
+            Console.WriteLine("Some other text...");
+        }
+    }
+
+    // Enums -> Usado para declarar um conjunto de constantes nomeadas
+    // Podem ou não estar dentro de uma class
+    enum Level
+    {
+        Low,
+        Medium,
+        High
+    }
+
+    enum Months
+    {
+        January,    // 0
+        February,   // 1
+        March,      // 2
+        April,      // 3
+        May,        // 4
+        June,       // 5
+        July        // 6
+    }
+
+    /*
+    static void checkAge(int age)
+    {
+        if (age < 18)
+        {
+            throw new ArithmeticException("Access denied - You must be at least 18 years old.");
+        }
+        else
+        {
+            Console.WriteLine("Access granted - You are old enough!");
+        }
+    }
+    */
 
     class Program
     {
@@ -272,9 +350,86 @@ namespace CSClasses
             myDog.animalSound();
             */
 
+            /*
             Pig myPig = new Pig();
             myPig.animalSound();
             myPig.sleep();
+            */
+
+            Pig myPig = new Pig();
+            myPig.animalSound();
+
+            DemoClass myObj = new DemoClass();
+
+            myObj.myMethod();
+            myObj.myOtherMethod();
+
+            Console.WriteLine("\n##########################################\n");
+
+            Level myVar = Level.Medium;
+            Console.WriteLine(myVar);
+
+            Console.WriteLine("\n##########################################\n");
+
+            Months myMonth = Months.April;
+            Console.WriteLine(myMonth);
+
+            int myMonthNum = (int)Months.April;
+            Console.WriteLine(myMonthNum);
+
+            Console.WriteLine("\n##########################################\n");
+
+            Level myVar2 = Level.Medium;
+            switch (myVar2)
+            {
+                case Level.Low:
+                    Console.WriteLine("Low level");
+                    break;
+                case Level.Medium:
+                    Console.WriteLine("Medium level");
+                    break;
+                case Level.High:
+                    Console.WriteLine("High level");
+                    break;
+                default:
+                    break;
+            }
+
+            Console.WriteLine("\n##########################################\n");
+
+            string writeText = "Hello World!";
+            File.WriteAllText("filename.txt", writeText);
+
+            string readText = File.ReadAllText("filename.txt");
+            /*
+             *  Method	Description
+                AppendText()    Appends text at the end of an existing file
+                Copy()	        Copies a file
+                Create()	    Creates or overwrites a file
+                Delete()	    Deletes a file
+                Exists()	    Tests whether the file exists
+                ReadAllText()	Reads the contents of a file
+                Replace()	    Replaces the contents of a file with the contents of another file
+                WriteAllText()	Creates a new file and writes the contents to it. If the file already exists, it will be overwritten.
+            */
+
+            Console.WriteLine("\n##########################################\n");
+
+            try
+            {
+                int[] myNumbers = { 1, 2, 3 };
+                Console.WriteLine(myNumbers[10]);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Something went wrong!");
+            }
+            finally
+            {
+                Console.WriteLine("The 'try catch' is finished.");
+            }
+
+            checkAge(15);
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
