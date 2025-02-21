@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CSTutorial
 {
@@ -549,6 +550,52 @@ namespace CSTutorial
 
             // Create an array of four elements, omitting the new keyword, and without specifying the size
             string[] cars5 = { "Volvo", "BMW", "Ford", "Mazda" };
+
+            for (int i = 0; i < cars.Length; i++)
+            {
+                Console.WriteLine(cars[i]);
+            }
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            foreach (string car in cars)
+            {
+                Console.WriteLine(car);
+            }
+
+            Array.Sort(cars);
+            foreach (string car in cars)
+            {
+                Console.WriteLine(car);
+            }
+
+            int[] myNums2 = { 5, 1, 8, 9 };
+            Console.WriteLine(myNums2.Max());
+            Console.WriteLine(myNums2.Min());
+            Console.WriteLine(myNums2.Sum());
+
+            int[,] numbers = { { 1, 4, 2 }, { 3, 6, 8 } };
+            // int[,,] -> array de inteiros com 3 dimensões
+            Console.WriteLine(numbers[0, 2]);       //  Outputs 2
+            numbers[0, 0] = 5;
+            Console.WriteLine(numbers[0, 0]);       //  Outputs 5
+
+            foreach (int i in numbers)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine("\n\n#############################################\n\n");
+
+            int[,] numbers3 = { { 1, 4, 2 }, { 3, 6, 8 } };
+
+            for (int i = 0; i < numbers3.GetLength(0); i++)
+            {
+                for (int j = 0; j < numbers3.GetLength(1); j++)
+                {
+                    Console.WriteLine(numbers3[i, j]);
+                }
+            }
         }
     }
 }
