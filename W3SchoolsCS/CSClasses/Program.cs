@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CSClasses;
+using System;
 
 namespace CSClasses
 {
@@ -56,6 +53,7 @@ namespace CSClasses
     }
     */
 
+    /*
     class Car
     {
         public string model;
@@ -67,6 +65,132 @@ namespace CSClasses
             model = modelName;
             color = modelColor;
             year = modelYear;
+        }
+    }
+    */
+
+    /*
+    *   Access Modifiers
+    *   Modifier	Description
+        public	    The code is accessible for all classes
+        private	    The code is only accessible within the same class
+        protected	The code is accessible within the same class, or in a class that is inherited from that class. 
+        internal	The code is only accessible within its own assembly, but not from another assembly. 
+    */
+
+    /*
+    // Private Modifier -> Não vai ser possível aceder 
+    // Se não for definido nenhum modificador, o campo é privado por defeito
+    class Car
+    {
+        private string model = "Mustang";
+    } 
+    */
+
+    /*
+    class Car
+    {
+        public string model = "Mustang";
+    }
+    */
+
+    /*
+     * Encapsulamento -> Proteger os campos de uma classe, para que não possam ser acedidos diretamente de fora da classe
+     * Para obter encapsulamento é necessário definir os campos como privados e criar métodos públicos para aceder a esses campos
+     * read-only -> Apenas é possível ler o valor, não é possível alterar
+     *  Apenas se define o get
+     * write-only -> Apenas é possível alterar o valor, não é possível ler
+     *  Apenas se define o set
+    */
+    class Person
+    {
+        private string name;    // field
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        // Propriedades automáticas
+        public string Name2 { get; set; }
+    }
+
+    /*
+     * Inheritance
+     *  Derived Class (child) - the class that inherits from another class
+     *  Base Class (parent) - the class being inherited from
+     * Para se herdar de uma class mãe é necessário usar o : e o nome da classe mãe
+    */
+    class Vehicle   // Base class (parent)
+    {
+        public string brand = "Ford";  // Vehicle field
+        public void honk()  // Vehicle method
+        {
+            Console.WriteLine("Tuut, tuut!");
+        }
+    }
+
+    class Car : Vehicle     // Derived class (child)
+    {
+        public string modelName = "Mustang";  // Car field
+    }
+    // sealed -> Impede herença de uma classe
+    // sealed class Car -> não vai herdar da class Vehicle
+
+    /*
+     * Polimorfismo
+     * Permite que as classes derivadas possam substituir ou estender a funcionalidade da classe base
+    */
+    /*
+    class Animal  // Base class (parent) 
+    {
+        public virtual void animalSound()
+        {
+            Console.WriteLine("The animal makes a sound");
+        }
+        // É preciso usar virtual para permitir que as classes derivadas substituam o método
+    }
+
+    class Pig : Animal  // Derived class (child) 
+    {
+        public override void animalSound()
+        {
+            Console.WriteLine("The pig says: wee wee");
+        }
+        // É preciso usar override para substituir o método da classe base
+    }
+
+    class Dog : Animal  // Derived class (child) 
+    {
+        public override void animalSound()
+        {
+            Console.WriteLine("The dog says: bow wow");
+        }
+        // É preciso usar override para substituir o método da classe base
+    }
+    */
+
+    /*
+     * Abstract Classes and Methods
+     * Consiste em esconder certos detalhes e mostrar apenas a funcionalidades essenciais de um objeto
+     *  Abstract Class -> Não pode ser instanciada -> tem de ser herdada por outra class
+     *  Abstract Method -> Só pode ser usado numa classe abstrata e não tem corpo
+    */
+    abstract class Animal
+    {
+        public abstract void animalSound();     // Não tem corpo
+        public void sleep()
+        {
+            Console.WriteLine("Zzz");
+        }
+    }
+
+    class Pig : Animal
+    {
+        public override void animalSound()
+        {
+            Console.WriteLine("The pig says: wee wee");
         }
     }
 
@@ -113,8 +237,44 @@ namespace CSClasses
             Console.WriteLine(Ford.model);
             */
 
+            /*
             Car Ford = new Car("Mustang", "Red", 1969);
             Console.WriteLine(Ford.model + " " + Ford.color + " " + Ford.year);
+            */
+
+            /*
+            Car myObj = new Car();
+            Console.WriteLine(myObj.model);     
+            */
+
+            Person myPerson = new Person();
+            myPerson.Name = "Liam";
+            myPerson.Name2 = "John";
+            Console.WriteLine(myPerson.Name);
+            Console.WriteLine(myPerson.Name2);
+
+            Console.WriteLine("\n##########################################\n");
+
+            Car myCar = new Car();
+
+            myCar.honk();
+            Console.WriteLine(myCar.brand + " " + myCar.modelName);
+
+            Console.WriteLine("\n##########################################\n");
+
+            /*
+            Animal myAnimal = new Animal();     // Create a Animal object
+            Animal myPig = new Pig();           // Create a Pig object
+            Animal myDog = new Dog();           // Create a Dog object
+
+            myAnimal.animalSound();
+            myPig.animalSound();
+            myDog.animalSound();
+            */
+
+            Pig myPig = new Pig();
+            myPig.animalSound();
+            myPig.sleep();
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
